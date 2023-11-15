@@ -1,29 +1,25 @@
 class TodoList:
     def __init__(self):
-        pass
+        self.todo_list = {}
 
     def add(self, todo):
-        # Parameters:
-        #   todo: an instance of Todo
-        # Returns:
-        #   Nothing
-        # Side-effects:
-        #   Adds the todo to the list of todos
-        pass
-      
-    def incomplete(self):
-        # Returns:
-        #   A list of Todo instances representing the todos that are not complete
-        pass
+        self.todo_list[todo.task]=todo.status
 
+    def incomplete(self):
+        incomplete = []
+        for todo in self.todo_list.items():
+            if todo[1] == 'False':
+                incomplete.append(todo[0])
+        return incomplete
+    
     def complete(self):
-        # Returns:
-        #   A list of Todo instances representing the todos that are complete
-        pass
+        complete = []
+        for todo in self.todo_list.items():
+            if todo[1] == 'True':
+                complete.append(todo[0])
+        return complete
 
     def give_up(self):
-        # Returns:
-        #   Nothing
-        # Side-effects:
-        #   Marks all todos as complete
-        pass
+        # loop through keys and values in dict, update values to true
+        for key, value in self.todo_list.items():
+            self.todo_list.update({key: "True"})
